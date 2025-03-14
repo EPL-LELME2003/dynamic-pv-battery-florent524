@@ -41,7 +41,7 @@ model.battery_discharge_rate = Constraint(range(timestep), rule=battery_discharg
 
 def battery_balance(model, t):
     if t == 0:
-        return model.batt[t] == model.batt_max * 0.5
+        return model.batt[t] == model.batt_max *0.08
     else:
         return model.batt[t] == model.batt[t - 1] + model.batt_in[t] * eff_batt_in - model.batt_out[t] / eff_batt_out
 model.battery_balance = Constraint(range(timestep), rule=battery_balance)
